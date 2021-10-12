@@ -21,6 +21,10 @@ if __name__== '__main__':
     parser.add_argument('-z', '--zoom',type=int, help='level zoom <numbre from 1 to 21>')   
     parser.add_argument('-c', '-coord',type=int, nargs=4,help='Coordiantes <StartX, StartY, EndX, EndY>')
     args = parser.parse_args()
-    main(args.c[0], args.c[1], args.c[2],  args.c[3], args.zoom, args.timeBetweenRequests, args.timeBetweenBatches)
+    try:
+        main(args.c[0], args.c[1], args.c[2],  args.c[3], args.zoom, args.timeBetweenRequests, args.timeBetweenBatches)
+    except urllib.error.URLError as e:
+        raise Excetion(e)
+
 
 
